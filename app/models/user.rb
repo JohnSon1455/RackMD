@@ -25,6 +25,12 @@ class User < ApplicationRecord
     collected_notes.exists?(n.id)
   end
 
+  def check_tags
+    self.tags.each do |tag|
+      Tag.destroy(tag.id) if Tagging.find_by(tag_id: tag.id) == nil
+    end
+  end
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email

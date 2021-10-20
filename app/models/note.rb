@@ -13,7 +13,7 @@ class Note < ApplicationRecord
   def save_tag(tag_list, note)
     self.tags = tag_list.map do |tag|
       Tag.where(title: tag, user_id: note.user_id).first_or_create!
-    end 
+    end
   end
 
   def self.search(search) 
