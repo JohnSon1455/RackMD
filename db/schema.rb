@@ -75,8 +75,8 @@ ActiveRecord::Schema.define(version: 2021_09_30_035556) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
-    t.boolean "public_status", default: false
     t.boolean "private_status", default: false
+    t.boolean "public_status", default: false
     t.index ["user_id"], name: "index_notes_on_user_id"
   end
 
